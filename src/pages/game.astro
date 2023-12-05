@@ -5,7 +5,7 @@ import Header from '../components/Header/index.astro';
 import Footer from '../components/Footer/index.astro';
 import { ViewTransitions } from 'astro:transitions';
 
-const pageTitle = 'Main';
+const pageTitle = 'Game';
 ---
 
 <html lang="en">
@@ -18,15 +18,12 @@ const pageTitle = 'Main';
 		<ViewTransitions />
 	</head>
 	<body>
-		<div class="wrap">
+        <div class="wrap">
 			<Header />
 			<main class="main">
 				<h1 class="text-3xl font-bold">{ pageTitle } page</h1>
 			</main>
 			<Footer />
 		</div>
-		<script>
-			import '../scripts/script.js';
-		</script>
 	</body>
 </html>
