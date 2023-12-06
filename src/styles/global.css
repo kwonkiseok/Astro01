@@ -8,7 +8,6 @@ html {
   body {
     margin: 0 auto;
     width: 100%;
-    max-width: 1280px;
     min-height: 100vh;
     padding: 1rem;
     line-height: 1.5;
@@ -32,9 +31,142 @@ html {
   .wrap {
     display: flex;
     flex-direction: column;
+    max-width: 1280px;
     min-height: calc(100vh - 2rem);
+    margin: 0 auto;
   }
 
-  .wrap .main {
-    flex: 1;
+  .main {
+    position: relative;
   }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      -45deg,
+      #ffffff,
+      #ffe4e9,
+      #fcc8e2,
+      #f6baed,
+      #efb0ff,
+      #d3a2ff,
+      #8eb8ff,
+      #91efff,
+      #d5f9ff
+    );
+    background-size: 400% 400%;
+    animation: gradient 9s ease infinite;
+    height: 100vh;
+    z-index: -10;
+    opacity: .2;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .elogo { margin: auto; position: relative; width: 27.777778vw; height: 27.777778vw; transform-style: preserve-3d; transform-origin: 6.944444vw 6.944444vw 0; transform: perspective(27.777778vw) rotateY(46deg); animation: aniether 10s infinite; left: 7vw; animation-timing-function: linear; }
+    .trif { position: absolute; width: 0px; height: 0px; border-left: 6.944444vw solid transparent; border-right: 6.944444vw solid transparent; transition: all 3s ease; }
+    .elogo .u1 { transform: translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid #000; opacity: .7; }
+    .elogo .u2 { transform: rotateY(90deg) translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid #000; opacity: .5; }
+    .elogo .u3 { transform: rotateY(180deg) translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid #000; opacity: .2; }
+    .elogo .u4 { transform: rotateY(-90deg) translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid #000; opacity: .2 }
+    .elogo .ct { width: 13.888889vw; height: 13.888889vw; border: 0; transform: rotateX(-90deg) translateZ(9.722222vw); background-color: #111; opacity: .9; transition: all 3s ease; }
+    
+    .elogo .l1 { transform: translateY(3.333333vw) translateZ(3.333333vw) rotateX(156.5deg); border-bottom: 17.222222vw solid #000; opacity: .8; }
+    .elogo .l2 { transform: translateY(3.333333vw) rotateY(90deg) rotateZ(0deg) translateZ(3.333333vw) rotateX(156.5deg);  border-bottom: 17.222222vw solid #000; opacity: .5; }
+    .elogo .l3 { transform: translateY(3.333333vw) rotateY(180deg) rotateZ(0deg) translateZ(3.333333vw) rotateX(156.5deg);  border-bottom: 17.222222vw solid #000; opacity: .2; }
+    .elogo .l4 { transform: translateY(3.333333vw) rotateY(-90deg) rotateZ(0deg) translateZ(3.333333vw) rotateX(156.5deg);  border-bottom: 17.222222vw solid #000; opacity: .2; }
+    
+    .welcome { margin-top: 10vw; text-align: center; font-size: 8vw; color: #000; font-weight: 100; position: relative; }
+    .welcome > span { font-size: 10vw; font-style: italic; font-weight: 700; position: absolute; left: 50%; transform: translateX(-50%); color: #fff; }
+    .welcome > span:nth-child(1) { color: #fff; text-shadow: -1px -1px 0 rgba(150,150,150,.45), 1px -1px 0 rgba(150,150,150,.45), -1px 1px 0 rgba(150,150,150,.45), 1px 1px 0 rgba(150,150,150,.45); transition: all 2s ease; }
+    .welcome > span:nth-child(2) { color: #333; animation: animate 4s ease-in-out infinite; transition: color 2s ease; }
+
+    @media (min-width: 576px) {
+      .elogo { width: 100px; height: 100px; transform-origin: 25px 25px 0; transform: perspective(100px) rotateY(46deg); left: 25px; }
+      .trif { border-left-width: 25px; border-right-width: 25px; }
+      .elogo .u1 { transform: translateZ(12px) rotateX(23.5deg); border-bottom-width: 62px; }
+      .elogo .u2 { transform: rotateY(90deg) translateZ(12px) rotateX(23.5deg); border-bottom-width: 62px; }
+      .elogo .u3 { transform: rotateY(180deg) translateZ(12px) rotateX(23.5deg); border-bottom-width: 62px; }
+      .elogo .u4 { transform: rotateY(-90deg) translateZ(12px) rotateX(23.5deg); border-bottom-width: 62px; }
+      .elogo .ct { width: 50px; height: 50px; transform: rotateX(-90deg) translateZ(35px); }
+      
+      .elogo .l1 { transform: translateY(12px) translateZ(12px) rotateX(156.5deg); border-bottom-width: 62px;}
+      .elogo .l2 { transform: translateY(12px) rotateY(90deg) rotateZ(0deg) translateZ(12px) rotateX(156.5deg);  border-bottom-width: 62px; opacity: .5; }
+      .elogo .l3 { transform: translateY(12px) rotateY(180deg) rotateZ(0deg) translateZ(12px) rotateX(156.5deg);  border-bottom-width: 62px; opacity: .2; }
+      .elogo .l4 { transform: translateY(12px) rotateY(-90deg) rotateZ(0deg) translateZ(12px) rotateX(156.5deg);  border-bottom-width: 62px; opacity: .2; }
+
+      .welcome { margin-top: 30px; font-size: 36px; }
+      .welcome > span { font-size: 46px; }
+    }
+    
+    @keyframes aniether {
+        0%      { transform: perspective(27.777778vw) rotateY(46deg); }
+      100%      { transform: perspective(27.777778vw) rotateY(406deg); }
+    }
+
+    @keyframes aniether {
+        0%      { transform: perspective(100px) rotateY(46deg); }
+      100%      { transform: perspective(100px) rotateY(406deg) }
+    }
+    @keyframes animate {
+      0%,
+      100% {
+        clip-path: polygon(
+          0% 45%,
+          16% 44%,
+          33% 50%,
+          54% 60%,
+          70% 61%,
+          84% 59%,
+          100% 52%,
+          100% 100%,
+          0% 100%
+        );
+      }
+
+      50% {
+        clip-path: polygon(
+          0% 60%,
+          15% 65%,
+          34% 66%,
+          51% 62%,
+          67% 50%,
+          84% 45%,
+          100% 46%,
+          100% 100%,
+          0% 100%
+        );
+      }
+    }
+    
+    .custom-cursor {
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #fefefe;
+      transition: transform 350ms ease;
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 1000;
+    }
+    .custom-cursor--link {
+      transform: translate(-50%, -50%) scale(1.5);
+    }
