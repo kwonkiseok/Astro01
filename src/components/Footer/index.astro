@@ -1,15 +1,24 @@
 ---
 
 ---
-<footer class="rounded-lg shadow">
-    <div class="w-full max-w-screen-xl mx-auto p-4">
-        <span class="block text-xs text-zinc-600 sm:text-center">
+<footer>
+    <div class="w-full max-w-screen-xl mx-auto pt-8">
+        <span class="block text-xs text-black-900 sm:text-center">
             © 2023 <a href="/" class="hover:underline">Gisogi™</a>. All Rights Reserved.
         </span>
     </div>
+    <div class="wave"></div>
 </footer>
 <style>
-    footer {
-        background-color: rgba(255,255,255,.3);
+    footer .wave {
+        animation: animate 4s ease-in-out infinite; 
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 140px;
+        background: rgba(255,255,255,.7);
+        transition: color .5s ease;
+        z-index: -5;
     }
 </style>

@@ -25,8 +25,79 @@ const { pageTitle } = Astro.props;
 			<Footer />
 		</div>
         <div class="custom-cursor"></div>
-        <script>
-            import '../scripts/script.js';
+        <script is:inline>
+			var cursorFunc = () => {
+				var cursor = document.querySelector(".custom-cursor");
+				var links = document.querySelectorAll("a");
+				var initCursor = false;
+
+				for (var i = 0; i < links.length; i++) {
+				var selfLink = links[i];
+
+				selfLink.addEventListener("mouseover", function() {
+					cursor.classList.add("custom-cursor--link");
+				});
+				selfLink.addEventListener("mouseout", function() {
+					cursor.classList.remove("custom-cursor--link");
+				});
+				}
+
+				window.onmousemove = function(e) {
+					var mouseX = e.clientX;
+					var mouseY = e.clientY;
+					
+					if (!initCursor) {
+						cursor.classList.add('fade-in');
+						initCursor = true;
+					}
+					
+					cursor.style.top = mouseY + 'px';
+					cursor.style.left = mouseX + 'px';
+				};
+			
+				window.onmouseout = function(e) {
+					cursor.classList.remove('fade-in');
+					initCursor = false;
+				};
+			}
+
+			// const $trif = document.querySelectorAll('.trif'),
+			// 		$ct = document.querySelector('.ct'),
+			// 		$line = document.querySelector('.welcome > span:nth-child(1)'),
+			// 		$wave = document.querySelector('.welcome > span:nth-child(2)');
+					
+			// let colorFunc = () => {
+			// 	let randomColor = Math.random().toString(16).substr(-6);
+			// 	let randomColorHash = '#'+randomColor;
+			// 	let randomCtOp = Math.random() * (0.8 - 0.5) + 0.5;
+			// 	let randomCtOpNum = randomCtOp.toFixed(2);
+				
+			// 	$ct.style.backgroundColor = randomColorHash;
+			// 	$ct.style.opacity = randomCtOpNum;
+
+			// 	$wave.style.color = randomColorHash;
+			// 	$line.style.textShadow = '-1px -1px 0 '+ randomColorHash +', 1px -1px 0 '+ randomColorHash + ', -1px 1px 0 '+ randomColorHash + ', 1px 1px 0 '+ randomColorHash;
+			// 	$line.style.opacity = Math.random() * (0.5 - 0.3) + 0.3;
+
+			// 	$trif.forEach((el) => {
+			// 		let randomOp = Math.random() * (0.8 - 0.4) + 0.4;
+			// 		let randomOpNum = randomOp.toFixed(2);
+			// 		el.style.opacity = randomOpNum;
+			// 		el.style.borderBottomColor = randomColorHash;
+			// 	});
+			// }
+
+			document.addEventListener('astro:page-load', () => {
+				cursorFunc();
+			});
+
+			document.addEventListener('astro:before-swap', () => {
+				cursorFunc();
+			});
+
+			// document.addEventListener('astro:page-load', () => {
+			// 	setInterval(colorFunc, 3000);
+			// }, { once: true });
         </script>
 	</body>
 </html>
