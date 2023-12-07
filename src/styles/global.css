@@ -85,7 +85,7 @@ html {
     }
   }
 
-    .elogo { margin: auto; position: relative; width: 27.777778vw; height: 27.777778vw; transform-style: preserve-3d; transform-origin: 6.944444vw 6.944444vw 0; transform: perspective(27.777778vw) rotateY(46deg); animation: aniether 20s infinite; left: 7vw; animation-timing-function: linear; }
+    .elogo { margin: auto; position: relative; width: 27.777778vw; height: 27.777778vw; transform-style: preserve-3d; transform-origin: 6.944444vw 6.944444vw 0; transform: perspective(27.777778vw) rotateY(46deg); animation: aniether 10s infinite; left: 7vw; animation-timing-function: linear; }
     .trif { position: absolute; width: 0px; height: 0px; border-left: 6.944444vw solid transparent; border-right: 6.944444vw solid transparent; transition: all .5s ease; }
     .elogo .u1 { transform: translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid var(--logoColor); opacity: .7; }
     .elogo .u2 { transform: rotateY(90deg) translateZ(3.333333vw) rotateX(23.5deg); border-bottom: 17.222222vw solid var(--logoColor); opacity: .5; }

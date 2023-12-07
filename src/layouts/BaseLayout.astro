@@ -13,7 +13,7 @@ const { pageTitle } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro &gt; { pageTitle }</title>
+		<title>Gisogi &gt; { pageTitle }</title>
 		<ViewTransitions />
 	</head>
 	<body>
@@ -26,7 +26,7 @@ const { pageTitle } = Astro.props;
 		</div>
         <div class="custom-cursor"></div>
         <script is:inline>
-			var cursorFunc = () => {
+			const cursorFunc = () => {
 				var cursor = document.querySelector(".custom-cursor");
 				var links = document.querySelectorAll("a");
 				var initCursor = false;
@@ -61,43 +61,38 @@ const { pageTitle } = Astro.props;
 				};
 			}
 
-			// const $trif = document.querySelectorAll('.trif'),
-			// 		$ct = document.querySelector('.ct'),
-			// 		$line = document.querySelector('.welcome > span:nth-child(1)'),
-			// 		$wave = document.querySelector('.welcome > span:nth-child(2)');
-					
-			// let colorFunc = () => {
-			// 	let randomColor = Math.random().toString(16).substr(-6);
-			// 	let randomColorHash = '#'+randomColor;
-			// 	let randomCtOp = Math.random() * (0.8 - 0.5) + 0.5;
-			// 	let randomCtOpNum = randomCtOp.toFixed(2);
-				
-			// 	$ct.style.backgroundColor = randomColorHash;
-			// 	$ct.style.opacity = randomCtOpNum;
+			const stickyFunc = () => {
+				const header = document.querySelector('.header');		// header 섹션
+				const sentinal = document.querySelector('.sentinal');
 
-			// 	$wave.style.color = randomColorHash;
-			// 	$line.style.textShadow = '-1px -1px 0 '+ randomColorHash +', 1px -1px 0 '+ randomColorHash + ', -1px 1px 0 '+ randomColorHash + ', 1px 1px 0 '+ randomColorHash;
-			// 	$line.style.opacity = Math.random() * (0.5 - 0.3) + 0.3;
+				const stickyNav = function (entries) {
+					const [entry] = entries;
 
-			// 	$trif.forEach((el) => {
-			// 		let randomOp = Math.random() * (0.8 - 0.4) + 0.4;
-			// 		let randomOpNum = randomOp.toFixed(2);
-			// 		el.style.opacity = randomOpNum;
-			// 		el.style.borderBottomColor = randomColorHash;
-			// 	});
-			// }
+					// 뷰포트에서 header 섹션이 사라지는(isIntersecting: false) 시점에 네비게이션 바 요소에 sticky 클래스를 추가
+					if (!entry.isIntersecting) {
+						header.classList.add('sticky-init');
+					} else {
+						header.classList.remove('sticky-init');
+					} 
+				};
+
+				const sentinalObserver = new IntersectionObserver(stickyNav, {
+					root: null, // entire viewport
+					threshold: 0, // root의 0% 만큼 header가 보이거나(isIntersecting: true) 사라지면(isIntersecting: false) callback function을 실행
+				});
+
+				sentinalObserver.observe(sentinal);
+			}
 
 			document.addEventListener('astro:page-load', () => {
 				cursorFunc();
+				stickyFunc();
 			});
 
 			document.addEventListener('astro:before-swap', () => {
 				cursorFunc();
 			});
-
-			// document.addEventListener('astro:page-load', () => {
-			// 	setInterval(colorFunc, 3000);
-			// }, { once: true });
+			
         </script>
 	</body>
 </html>

@@ -3,9 +3,9 @@ import GNB from './gnb.astro';
 ---
 <div class="sentinal"></div>
 <header class="header rounded-lg shadow top-0 z-10">
-    <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-        <div class="flex justify-center items-center mx-auto flex-col">
-            <a href="/" class="flex items-center flex-col relative">
+    <nav class="border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 h-full">
+        <div class="flex justify-between items-center mx-auto flex-col h-full">
+            <a href="/" class="flex items-center flex-col logo-link">
                 <div class="logo">
                     <div class="elogo">
                         <div class="trif u1"></div>
@@ -29,32 +29,22 @@ import GNB from './gnb.astro';
 <style>
     header {
         background-color: rgba(255,255,255,.3);
-        transition: all .5s ease;
         position: sticky;
         top: 0;
-    }
-    header.sticky {
-        border-radius: 0 0 0.5rem 0.5rem;
-        background: #fff;
-    }
-    header > nav {
-        transition: all .5s ease;
+        transition: all .3s ease;
+        height: 140px;
     }
     .logo {
         transform: scale(.6);
-        transition: all .5s ease;
-    }
-    .sticky .logo {
-        transform: scale(.35);
-        transform-origin: center 15px;
+        transition: all .3s ease;
     }
     .logo .elogo {
-        /* height: 80px;
+        height: 80px;
         top: -20px;
-        transition: all .5s ease; */
+        transition: all .3s ease;
     }
-    .sticky .elogo {
-        height: 50px;
+    .logo-link {
+        transition: all .3s ease;
     }
     .sentinal {
         position: absolute;
@@ -62,5 +52,14 @@ import GNB from './gnb.astro';
         left: 0;
         right: 0;
         z-index: -10;
+    }
+
+    header.sticky-init {
+        border-radius: 0 0 0.5rem 0.5rem;
+        background: #fff;
+    }
+    header.sticky-init .logo {
+        /*transform: scale(.35);
+        transform-origin: center 15px;*/
     }
 </style>
