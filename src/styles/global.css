@@ -186,3 +186,8 @@ html {
     a {
       cursor: none;
     }
+
+    ::selection {
+      background: #f4b5cd;
+      color: #1e191a;
+    }
