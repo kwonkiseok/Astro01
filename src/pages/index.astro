@@ -5,11 +5,11 @@ const pageTitle = 'Home';
 <BaseLayout pageTitle={ pageTitle }>
 	<div class="hero flex flex-col justify-center">
 		<div class="text-center">
-			<div class="welcome">
-				<span>Gisooooogi</span>
-				<span>Gisooooogi</span>
-			</div>
-			
+			<svg viewBox="0 0 1320 300">
+				<text x="50%" y="50%" dy=".35em" text-anchor="middle">
+					Gisogi
+				</text>
+			</svg>	
 		</div>
 	</div>
 </BaseLayout>
@@ -20,5 +20,43 @@ const pageTitle = 'Home';
 		left: 0;
 		right: 0;
 		bottom: 0;
+	}
+	svg {
+		font-family: 'ubuntu', sans-serif;
+		position: absolute; 
+		width: 100%; 
+		height: 100%;
+		top: -20px;
+	}
+	svg text {
+		animation: stroke 5s infinite alternate;
+		stroke-width: 1;
+		stroke: #000;
+		font-size: 140px;
+		font-weight: 700;
+	}
+	@keyframes stroke {
+		0%   {
+			fill: rgba(72,138,20,0); 
+			stroke: rgba(0,0,0,1);
+			stroke-dashoffset: 25%; 
+			stroke-dasharray: 0 50%; 
+			stroke-width: 1;
+		}
+		10%  {
+			fill: rgba(72,138,20,0); 
+			stroke: rgba(0,0,0,1); 
+		}
+		80%  {
+			fill: rgba(72,138,20,0); 
+			stroke: rgba(0,0,0,1); 
+		}
+		100% {
+			fill: rgba(0,0,0,1); 
+			stroke: rgba(54,95,160,0); 
+			stroke-dashoffset: -25%; 
+			stroke-dasharray: 50% 0; 
+			stroke-width: 1;
+		}
 	}
 </style>
