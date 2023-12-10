@@ -6,7 +6,7 @@ const { pageTitle } = Astro.props;
     { 
         ()=> {
           if (pageTitle != 'Home') {
-            return( <h2>{ pageTitle }</h2> )
+            return( <h2 class="text-3xl pb-4">{ pageTitle }</h2> )
           }
         }
       }

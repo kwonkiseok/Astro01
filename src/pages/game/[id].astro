@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const pageTitle = 'Game Detail'
+
+export async function getStaticPaths() {
+  const games = await fetch('https://www.freetogame.com/api/games').then(response => response.json());
+
+  return games.map((game) => {
+    return {
+      params: { id: game.id },
+      props: { game },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { game } = Astro.props;
+---
+<BaseLayout pageTitle={ pageTitle }>
+  <div class="relative isolate overflow-hidden py-6">
+    <h3 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{ game.title }</h3>
+    <p class="mt-6 text-xl leading-8 text-gray-700">
+      { game.short_description }
+    </p>
+    <img class="" src={ game.thumbnail } alt="">
+    <ul role="list" class="mt-2 space-y-3 text-gray-600">
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Genre
+        </span>
+        <span class="ml-4">
+          { game.genre }
+        </span>
+      </li>
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Platform
+        </span>
+        <span class="ml-4">
+          { game.platform }
+        </span>
+      </li>
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Publisher
+        </span>
+        <span class="ml-4">
+          { game.publisher }
+        </span>
+      </li>
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Developer
+        </span>
+        <span class="ml-4">
+          { game.developer }
+        </span>
+      </li>
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Release Date
+        </span>
+        <span class="ml-4">
+          { game.release_date }
+        </span>
+      </li>
+      <li class="flex">
+        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/30">
+          Play Now
+        </span>
+        <span class="ml-4">
+          <a href={ game.game_url } target="_blank">
+              <span class="inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-black-600 ring-1 ring-inset ring-gray-500/30">GO TO SITE</span>
+          </a>
+        </span>
+      </li>
+    </ul>
+  </div>
+</BaseLayout>
